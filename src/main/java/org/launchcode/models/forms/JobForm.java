@@ -29,7 +29,7 @@ public class JobForm {
      */
     @NotNull
     @Size(min=1, message = "Employer may not be empty")
-    private ArrayList<Employer> employers = new ArrayList<>();
+    private ArrayList<Employer> employers;
 
     @NotNull
     @Size(min=1, message = "Location may not be empty")
@@ -62,7 +62,7 @@ public class JobForm {
 
 
 
-        
+
     }
 
     public String getName() {

@@ -27,6 +27,15 @@
 
         <!-- TODO #5 - Create <select> dropdowns for other job fields -->
 
+        <div class="form-group">
+            <label th:for="locations">Location</label>
+            <select th:field="*{locations}">
+                <option th:each="location : *{locations}"
+                        th:value="${location.value}"
+                        th:text="${location.value}"></option>
+            </select>
+        </div>
+
         <input type="submit" value="Add Job" />
     </form>
 
