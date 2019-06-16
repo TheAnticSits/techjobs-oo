@@ -51,27 +51,28 @@ public class JobController {
         Once you've created the new job, redirect to the single job display page that you created above. If the jobForm model object fails validation, display the form again.
         */
 
-        Job someJob = new Job();
-        model.addAttribute(someJob);
+        Job newJob = new Job();
+        model.addAttribute(newJob);
+
+        model.addAttribute(jobForm.getEmployers());
+        model.addAttribute(jobForm.getLocations());
+        model.addAttribute(jobForm.getPositionTypes());
+        model.addAttribute(jobForm.getCoreCompetencies());
+
+        jobData.add(newJob);
+        return "job-detail";
+
+/*        Job newJob = new Job();
         /*model.addAttribute(someJob.getEmployer());
         model.addAttribute((someJob.getLocation()));
         model.addAttribute(someJob.getPositionType());
         model.addAttribute(someJob.getCoreCompetency());*/
-/*        model.addAttribute(jobForm.getName());
-        model.addAttribute(jobForm.getEmployers());
-        model.addAttribute(jobForm.getLocations());
-        model.addAttribute(jobForm.getPositionTypes());
-        model.addAttribute(jobForm.getCoreCompetencies());*/
-        jobData.add(someJob);
-
-
-/*        Job newJob = new Job();
+//        model.addAttribute(jobForm.getName());
 
 
 
-        jobData.add(newJob);*/
 
-        return "job-detail";
+
 
     }
 }
