@@ -44,26 +44,32 @@ public class JobController {
         // TODO #6 - Validate the JobForm model, and if valid, create a
         // new Job and add it to the jobData data store. Then
         // redirect to the job detail view for the new Job.
-        /*Once you have that stuff in place, you'll be ready to process the form in task #6. Validate the form in the add handler of JobController, and if it's valid, create a new Job object and add it to the data layer by calling jobData.add(newJob).
+        /*Validate the form in the add handler of JobController, and if it's valid, create a new Job object and add it to the data layer by calling jobData.add(newJob).
 
                 To create the new job, you'll need to find the pre-existing objects for all fields other than name (employer, location, etc). Do this using the methods discussed above. Refer to the constructor in Job to make sure you list the objects in the correct order when calling it.
 
         Once you've created the new job, redirect to the single job display page that you created above. If the jobForm model object fails validation, display the form again.
         */
 
-        Job newJob = new Job();
-
-
-
-
-        model.addAttribute(jobForm.getName());
+        Job someJob = new Job();
+        model.addAttribute(someJob);
+        /*model.addAttribute(someJob.getEmployer());
+        model.addAttribute((someJob.getLocation()));
+        model.addAttribute(someJob.getPositionType());
+        model.addAttribute(someJob.getCoreCompetency());*/
+/*        model.addAttribute(jobForm.getName());
         model.addAttribute(jobForm.getEmployers());
         model.addAttribute(jobForm.getLocations());
         model.addAttribute(jobForm.getPositionTypes());
-        model.addAttribute(jobForm.getCoreCompetencies());
+        model.addAttribute(jobForm.getCoreCompetencies());*/
+        jobData.add(someJob);
 
 
-        jobData.add(newJob);
+/*        Job newJob = new Job();
+
+
+
+        jobData.add(newJob);*/
 
         return "job-detail";
 
