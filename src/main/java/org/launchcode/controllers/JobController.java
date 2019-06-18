@@ -44,26 +44,24 @@ public class JobController {
 
         // TODO #6 - Validate the JobForm model, and if valid, create a
         // new Job and add it to the jobData data store. Then
-        // redirect to the job detail view for the new Job.
-        /*Validate the form in the add handler of JobController, and if it's valid, create a new Job object and add it to the data layer by calling jobData.add(newJob).
 
-                To create the new job, you'll need to find the pre-existing objects for all fields other than name (employer, location, etc). Do this using the methods discussed above. Refer to the constructor in Job to make sure you list the objects in the correct order when calling it.
-
-        Once you've created the new job, redirect to the single job display page that you created above. If the jobForm model object fails validation, display the form again.
-        */
 
         Job newJob = new Job();
 
         newJob.setName(jobForm.getName());
-//        newJob.setEmployer(jobForm.getEmployerId());
-//        newJob.setLocation(jobForm.getLocations());
-//        newJob.setPositionType(jobForm.getPositionTypes());
-//        newJob.setCoreCompetency(jobForm.getCoreCompetencies());
 
+        newJob.setEmployer(jobForm.getEmployer());
+        newJob.setLocation(jobForm.getLocation());
 
+        newJob.setPositionType(jobForm.getPositionType());
+        newJob.setCoreCompetency(jobForm.getCoreCompetency());
+
+        System.out.println(jobForm.getLocations());
 
         jobData.add(newJob);
 
+        System.out.println(newJob.getName());
+        System.out.println((newJob.getLocation()));
 
         return "redirect:?id="+newJob.getId();
 
