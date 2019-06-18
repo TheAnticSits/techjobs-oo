@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import javax.validation.Valid;
 import java.util.ArrayList;
 
@@ -39,7 +40,7 @@ public class JobController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String add(Model model, @Valid JobForm jobForm, Errors errors, int id) {
+    public String add(Model model, @Valid JobForm jobForm, Errors errors) {
 
         // TODO #6 - Validate the JobForm model, and if valid, create a
         // new Job and add it to the jobData data store. Then
@@ -52,22 +53,19 @@ public class JobController {
         */
 
         Job newJob = new Job();
-        id = jobForm.getEmployerId();
-        model.addAttribute(jobData.findById(id));
-        System.out.println(jobForm.getName());
-        System.out.println(jobForm.getEmployerId());
+
+        newJob.setName(jobForm.getName());
+//        newJob.setEmployer(jobForm.getEmployerId());
+//        newJob.setLocation(jobForm.getLocations());
+//        newJob.setPositionType(jobForm.getPositionTypes());
+//        newJob.setCoreCompetency(jobForm.getCoreCompetencies());
 
 
 
         jobData.add(newJob);
 
-        return "redirect:/job";
 
-/*        Job newJob = new Job();
-        /*model.addAttribute(someJob.getEmployer());
-        model.addAttribute((someJob.getLocation()));
-        model.addAttribute(someJob.getPositionType());
-        model.addAttribute(someJob.getCoreCompetency());*/
-//        model.addAttribute(jobForm.getName());
+        return "redirect:?id="+newJob.getId();
+
     }
 }

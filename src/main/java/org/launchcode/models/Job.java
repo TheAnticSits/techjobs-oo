@@ -17,6 +17,7 @@ public class Job {
     public Job() {
         id = nextId;
         nextId++;
+
     }
 
     public Job(String aName, Employer aEmployer, Location aLocation,
