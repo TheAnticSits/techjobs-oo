@@ -54,6 +54,7 @@ public class JobForm {
     }
 
     public Location getLocation() {
+
         return location;
     }
 

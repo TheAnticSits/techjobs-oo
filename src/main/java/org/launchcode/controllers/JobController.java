@@ -1,6 +1,6 @@
 package org.launchcode.controllers;
 
-import org.launchcode.models.Job;
+import org.launchcode.models.*;
 import org.launchcode.models.data.JobDataImporter;
 import org.launchcode.models.forms.JobForm;
 import org.launchcode.models.data.JobData;
@@ -46,22 +46,31 @@ public class JobController {
         // new Job and add it to the jobData data store. Then
 
 
+        String name = jobForm.getName();
+        int id = jobForm.getEmployerId();
+        Employer employer = jobData.getEmployers().findById(id);
+        Location location = jobForm.getLocations().get(0);
+        PositionType positionType = jobForm.getPositionTypes().get(0);
+        CoreCompetency coreCompetency = jobForm.getCoreCompetencies().get(0);
+
         Job newJob = new Job();
 
-        newJob.setName(jobForm.getName());
+        System.out.println(jobForm.getEmployerId());
+        System.out.println();
 
-        newJob.setEmployer(jobForm.getEmployer());
-        newJob.setLocation(jobForm.getLocation());
+        newJob.setName(name);
+        newJob.setEmployer(employer);
+        newJob.setLocation(location);
+        newJob.setPositionType(positionType);
+        newJob.setCoreCompetency(coreCompetency);
 
-        newJob.setPositionType(jobForm.getPositionType());
-        newJob.setCoreCompetency(jobForm.getCoreCompetency());
 
-        System.out.println(jobForm.getLocations());
+        if(jobForm.getName() == ""){
+
+            return "redirect:/job/add";
+        }
 
         jobData.add(newJob);
-
-        System.out.println(newJob.getName());
-        System.out.println((newJob.getLocation()));
 
         return "redirect:?id="+newJob.getId();
 
