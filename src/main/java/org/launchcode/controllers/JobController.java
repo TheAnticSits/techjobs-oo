@@ -67,6 +67,7 @@ public class JobController {
 
         if(jobForm.getName() == ""){
 
+        errors.addAllErrors(errors);
             return "redirect:/job/add";
         }
 
